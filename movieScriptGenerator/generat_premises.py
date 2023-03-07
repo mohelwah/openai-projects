@@ -5,7 +5,7 @@ from time import sleep
 import re
 
 openai.api_key = os.getenv("OPENAI_KEY")
-print('first')
+print("first")
 engine = "text-davinci-002"
 
 

@@ -6,7 +6,7 @@ test:
 	python -m pytest -vv test_hello.py
 
 format:
-	black *.py
+	black *.py movieScriptGenerator/*.py
 
 
 lint:

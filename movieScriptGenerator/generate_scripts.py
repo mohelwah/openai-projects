@@ -5,7 +5,7 @@ from time import sleep
 import re
 
 openai.api_key = os.getenv("OPENAI_KEY")
-print('first')
+print("first")
 engine = "text-davinci-002"
 
 
@@ -44,14 +44,14 @@ def generate_scripts(
 
 
 if __name__ == "__main__":
-    for filename in os.listdir('premises'):
-        with open('premises/%s' % filename, 'r', encoding='utf-8') as f:
+    for filename in os.listdir("premises"):
+        with open("premises/%s" % filename, "r", encoding="utf-8") as f:
             premise = f.read()
-        with open('prompt_script.txt', 'r', encoding='utf-8') as f:
-            prompt = f.read().replace('<<premise>>', premise)
-        
+        with open("prompt_script.txt", "r", encoding="utf-8") as f:
+            prompt = f.read().replace("<<premise>>", premise)
+
         script = generate_scripts(prompt)
         print(script, "\n\n\n")
-        new_filename = filename.replace('premise', 'script')
-        with open('scripts/%s' % new_filename, 'w', encoding='utf-8') as f:
+        new_filename = filename.replace("premise", "script")
+        with open("scripts/%s" % new_filename, "w", encoding="utf-8") as f:
             f.write(script)
