@@ -9,7 +9,7 @@ print('first')
 engine = "text-davinci-002"
 
 
-def generate_premises(
+def generate_scripts(
     prompt,
     max_tokens=250,
     temperature=1.1,
@@ -44,11 +44,14 @@ def generate_premises(
 
 
 if __name__ == "__main__":
-    for i in range(2):
-        with open("prompt_premise.txt", "r") as f:
-            prompt = f.read()
-        premise = generate_premises(prompt)
-        print(premise, "\n\n\n")
-        filename = "premise_%s.txt" % i
-        with open("premises/%s" % filename, "w", encoding="utf-8") as f:
-            f.write(premise)
+    for filename in os.listdir('premises'):
+        with open('premises/%s' % filename, 'r', encoding='utf-8') as f:
+            premise = f.read()
+        with open('prompt_script.txt', 'r', encoding='utf-8') as f:
+            prompt = f.read().replace('<<premise>>', premise)
+        
+        script = generate_scripts(prompt)
+        print(script, "\n\n\n")
+        new_filename = filename.replace('premise', 'script')
+        with open('scripts/%s' % new_filename, 'w', encoding='utf-8') as f:
+            f.write(script)
