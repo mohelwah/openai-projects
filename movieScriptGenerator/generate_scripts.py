@@ -3,7 +3,7 @@ import os
 from time import sleep
 import re
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_KEY")
 
 engine = "text-davinci-002"
 
